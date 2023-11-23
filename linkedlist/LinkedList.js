@@ -49,6 +49,20 @@ class LinkedList {
     return this;
   }
 
+  reverse() {
+    let first = this.head;
+    let second = first.next;
+    while(second !== null) {
+      let temp = second.next;
+      second.next = first;
+      first = second;
+      second = temp;
+    }
+    this.head.next = null;
+    this.head = first;
+    return this;
+  }
+
   print() {
     let res = [];
     let temp = this.head;
@@ -56,7 +70,7 @@ class LinkedList {
       res.push(temp.value);
       temp = temp.next;
     }
-    console.log(res);
+    return res;
   }
 }
 

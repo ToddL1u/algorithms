@@ -21,7 +21,6 @@ const getWords = (arr, word) => {
   }
   columnMatch = column.some(item => item.indexOf(word));
   diagonalMatch = diagonal.some(item => item.indexOf(word));
-  console.log(rowMatch, columnMatch, diagonalMatch)
   
   return rowMatch && columnMatch && diagonalMatch;
 };

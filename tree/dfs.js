@@ -1,12 +1,12 @@
-// type: 0 pre order
-// type: 1 in order
-// type: 2 post order
+// type: 0 pre order [root left right]
+// type: 1 in order [left root right]
+// type: 2 post order []
 const dfs = (root, type = 0) => {
   let result = [];
   if(!root) return result;
   if(type == 0) {
     let stack = [root];
-    while(stack.length > 0) {
+    while(stack.length > 0) { 
       let node = stack.pop();
       if(node.value) result.push(node.value);
       if(node.right) stack.push(node.right);
@@ -38,12 +38,38 @@ const dfs = (root, type = 0) => {
       current = node.right;
     }
   } else if (type == 2) {
-    const postorder = treeNode => {
-      treeNode.left && postorder(treeNode.left);
-      treeNode.right && postorder(treeNode.right);
-      result.push(treeNode.value);
+    //solution 1
+    //recursive
+    // const postorder = treeNode => {
+    //   treeNode.left && postorder(treeNode.left);
+    //   treeNode.right && postorder(treeNode.right);
+    //   result.push(treeNode.value);
+    // }
+    // postorder(root);
+
+    //solution2
+    //iterative
+    let stack = [root];
+    let visited = {};
+    let current = root;
+    while(current !== null && !visited[current.value]) {
+      if(current.left !== null && !visited[current.left.value]) {
+        stack.push(current.left);
+        current = current.left;
+      } else if(current.right !== null && !visited[current.right.value]) {
+        stack.push(current.right);
+        current = current.right;
+      } else { //leave node
+        let node = stack.pop();
+        result.push(node.value);
+        visited[node.value]??= true;
+        // current = node;
+        // console.log(stack.length, stack);
+        if(stack.length > 0) {
+          current = stack[stack.length -1];
+        } 
+      }
     }
-    postorder(root);
   }
   return result;
 }

@@ -6,7 +6,7 @@ const findSecondLargeNumber = arr => {
       secondLarge = large;
       large = n;
     } else if(n > secondLarge) {
-      secondLarge = large;
+      secondLarge = n;
     }
   })
   return secondLarge;

@@ -18,11 +18,11 @@ const getPorductArray = (arr) => {
   let left = new Array(arr.length).fill(1);
   let right = new Array(arr.length).fill(1);
   for (let i = 1; i < arr.length; i++) {
-    left[i] = left[i - 1] * arr[i-1];
+    left[i] = left[i - 1] * arr[i - 1];
     right[i] = right[i - 1] * arr[arr.length - i];
   }
-  for(let i = 0; i<arr.length; i++) {
-    product_result.push(left[i] * right[arr.length -1 -i]);
+  for (let i = 0; i < arr.length; i++) {
+    product_result.push(left[i] * right[arr.length - 1 - i]);
   }
   return product_result;
 };

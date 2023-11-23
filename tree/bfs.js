@@ -1,27 +1,28 @@
 const bfs = tree => {
   //solution1
   // iterative
-  let res = [];
-  let queue = [tree];
-  while(queue.length !== 0) {
-    let next = queue.shift();
-    if(next.value) res.push(next.value);
-    if(next.left) queue.push(next.left);
-    if(next.right) queue.push(next.right);
-  }
-  return res;
+  // let res = [];
+  // let queue = [tree];
+  // while(queue.length !== 0) {
+  //   let next = queue.shift();
+  //   if(next.value) res.push(next.value);
+  //   if(next.left) queue.push(next.left);
+  //   if(next.right) queue.push(next.right);
+  // }
+  // return res;
 
   //solution2
   //recursive;
-  // const recursion = (treeNode, result) => {
-  //   if(treeNode.value == null) return;
-  //   result.push(treeNode.value)
-  //   if(treeNode.left) return recursion(treeNode.left, result);
-  //   if(treeNode.right) return recursion(treeNode.right, result);
-  //   return result;
-  // }
+  const recursion = (queue, result) => {
+    if(queue.length == 0) return result;
+    let treeNode = queue.shift(); 
+    result.push(treeNode.value)
+    if(treeNode.left) queue.push(treeNode.left);
+    if(treeNode.right) queue.push(treeNode.right);
+    return recursion(queue, result);
+  }
   
-  // return recursion(tree, []);
+  return recursion([tree], []);
 }
 
 module.exports = bfs;

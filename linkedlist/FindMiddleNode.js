@@ -13,8 +13,8 @@ const findMiddleNode = list => {
 
   //solution2
   //use two pointer and run once the loop
-  let slowPointer = list.head, fastPointer = list.head;
-  while(fastPointer !== null && fastPointer.next !== null) {
+  let slowPointer = list.head, fastPointer = list.head; //including null if the amount is even
+  while(fastPointer && fastPointer.next ) {
     fastPointer = fastPointer.next.next;
     slowPointer = slowPointer.next;
   }

@@ -9,6 +9,12 @@ bst.insert(10);
 bst.insert(15);
 bst.insert(19);
 // console.log(JSON.stringify(bst));
+/**
+ *       14
+ *     8    17
+ *  6   11 15  19
+ *     10
+ */   
 const bfs = require("./bfs");
 const dfs = require("./dfs");
 describe("search trees", () => {
