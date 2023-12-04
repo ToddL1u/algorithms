@@ -4,7 +4,7 @@
   "description": "",
   "main": "findMode.js",
   "scripts": {
-    "test": "clear && jest"
+    "test": "clear && jest --watchAll --verbose"
   },
   "keywords": [],
   "author": "",
